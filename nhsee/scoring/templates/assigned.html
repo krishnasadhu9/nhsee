@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+    {% block content %}
+    <div align="center">
+        <h2 allign:center>Assignment of judge-assignment</h2>
+    </div>
+        <form action= "assigned_judge"  method="POST">
+            {% csrf_token %}
+            <table style="width: 70%;" align='center'>
+              <label for="unassigned_judges">unassigned judges:</label><br>
+              <input list="unassigned_judges" id="judge" name="judge" maxlength="100" required>
+                  <datalist id="unassigned_judges">
+                      {% if unassigned_judges %}
+                          {% for judge in unassigned_judges %}
+                              <option value="{{ judge.judge_id }}">
+                          {% endfor %}
+                      {% else %}
+                          <option value="No records">
+                      {% endif %}
+                  </datalist>
+              <br>
+              <br>
+              <br>
+              <label for="unassigned_projects">unassigned_projects:</label><br>
+
+              <input list="unassigned_projects" id="project" name="project" maxlength="100" required>
+                  <datalist id="unassigned_projects">
+                      {% if unassigned_projects %}
+                          {% for project in unassigned_projects %}
+                              <option value="{{ project.project_id }}">
+                          {% endfor %}
+                      {% else %}
+                          <option value="No records">
+                      {% endif %}
+                  </datalist>
+              <br><br>
+              <button type="submit" formaction="/assigned">Create</button>
+
+        </form>
+
+    {% endblock content %}

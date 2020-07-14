@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <script src="/static/sorttable.js"></script>
+        <script src="/static/filterRecords.js"></script>
+          <input id="searchByProjectId" type="text" placeholder="Search by project ID" name="search">
+          <table class="sortable" id="table" style="text-align:center;" cellspacing="10">
+            <h3> Unassigned Project</h3>
+            <thead>
+                <tr>
+                    <th>Project ID</th>
+                    <th>Project title</th>
+                </tr>
+            </thead>
+            <tbody>
+              {% for unproject in unassigned_projects %}
+              <tr class="item">
+                <td>{{unproject.project_id}}</td>
+                <td>{{unproject.project_title}}</td>
+              </tr>
+              {% endfor %}
+          </tbody>
+      </table>
+  {% endblock content %}

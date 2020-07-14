@@ -1,0 +1,23 @@
+{% extends 'base.html' %}
+    {% block content %}
+        <script src="/static/sorttable.js"></script>
+        <script src="/static/filterRecords.js"></script>
+          <input id="searchByJudgeId" type="text" placeholder="Search by judge ID" name="search">
+          <table class="sortable" id="table" style="text-align:center;" cellspacing="10">
+            <h3> Unassigned Judges</h3>
+            <thead>
+                <tr>
+                    <th>Judge ID</th>
+                    <th>Judge name</th>
+                </tr>
+            </thead>
+            <tbody>
+            {% for unjudge in unassigned_judges %}
+            <tr class="item">
+                <td>{{unjudge.judge_id}}</td>
+                <td>{{unjudge.judge_name}}</td>
+            </tr>
+            {% endfor %}
+          </tbody>
+      </table>
+  {% endblock content %}
